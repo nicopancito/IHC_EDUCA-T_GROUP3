@@ -1,0 +1,1100 @@
+/* ==================================== */
+/* 0. Variables y Reset Básico */
+/* ==================================== */
+
+:root {
+    /* Colores según tu guía */
+    --color-primario: #216FF0;
+    --color-primario-suave: #3688FF;
+    --color-secundario: #FFFFFF;
+    --color-terciario: #1A1A1A;
+    --color-realce: #28B463;
+    
+    /* === CAMBIOS DE ESTILO === */
+    --color-fondo-claro: #F9FAFB; /* Un gris muy suave y moderno */
+    --color-footer-bg: var(--color-terciario); /* Footer negro elegante */
+    --color-border-suave: #E5E7EB; /* Para bordes sutiles */
+
+    /* === CAMBIOS DE FUENTE === */
+    --font-principal: 'Manrope', sans-serif; /* Para títulos */
+    --font-secundaria: 'Inter', sans-serif;  /* Para texto */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Para que los anclajes #faq, etc. sean suaves */
+}
+
+body {
+    font-family: var(--font-secundaria); /* Fuente principal para el cuerpo */
+    line-height: 1.6;
+    color: var(--color-terciario);
+    background-color: var(--color-secundario);
+    -webkit-font-smoothing: antialiased; /* Mejora renderizado de fuentes */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==================================== */
+/* 1. Tipografía y Encabezados */
+/* ==================================== */
+
+h1, h2, h3, h4 {
+    font-family: var(--font-principal); /* Fuente Manrope para todos los títulos */
+    line-height: 1.2;
+    color: var(--color-terciario);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3.2rem;
+    color: var(--color-terciario);
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+/* ==================================== */
+/* 2. Botones CTA */
+/* ==================================== */
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 35px; /* Un poco más de padding horizontal */
+    border-radius: 50px; /* === ESTILO "PILL" MODERNO === */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s, filter 0.3s;
+    text-align: center;
+}
+
+.primary-cta {
+    background-color: var(--color-realce);
+    color: var(--color-secundario);
+    border: 2px solid var(--color-realce);
+}
+
+.primary-cta:hover {
+    background-color: #249d56;
+    transform: translateY(-2px);
+    filter: brightness(1.1); /* Efecto hover más sutil */
+}
+
+.secondary-cta {
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+}
+
+.secondary-cta:hover {
+    background-color: #1c5ecc;
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+
+/* ==================================== */
+/* 3. Navbar */
+/* ==================================== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-family: var(--font-principal);
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-primario);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-terciario);
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-primario);
+}
+
+.hero-section-nuevo .navbar {
+    padding: 30px 0 0;
+}
+
+.hero-section-nuevo .logo {
+    color: var(--color-secundario);
+}
+
+.hero-section-nuevo .nav-links a {
+    color: var(--color-secundario);
+    opacity: 0.8;
+}
+
+.hero-section-nuevo .nav-links a:hover {
+    opacity: 1;
+}
+
+.hero-section-nuevo .cta-nav.login {
+    background: none;
+    border: 1px solid var(--color-secundario);
+    color: var(--color-secundario) !important;
+    padding: 8px 15px;
+    border-radius: 50px; 
+    font-weight: normal;
+}
+
+.hero-section-nuevo .cta-nav.signup {
+    background-color: var(--color-secundario);
+    color: var(--color-primario) !important;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 50px;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+
+/* ==================================== */
+/* 4. Hero Section */
+/* ==================================== */
+
+.hero-section-nuevo {
+    background: linear-gradient(135deg, var(--color-primario-suave) 0%, var(--color-primario) 100%);
+    color: var(--color-secundario);
+    padding-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-main-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 60px 20px;
+}
+
+.hero-text-content {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 40px;
+}
+
+.hero-text-content h1 {
+    font-size: 3.8rem;
+    color: var(--color-secundario);
+    margin-bottom: 20px;
+}
+
+.hero-text-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    max-width: 550px; 
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.play-button {
+    color: var(--color-secundario);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.play-button .triangle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-realce);
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 0.8rem;
+}
+
+.hero-image-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+    background: url('https://www.pngarts.com/files/7/College-Student-Transparent-Background-PNG.png') no-repeat center bottom;
+    background-size: contain;
+    margin-top: -50px;
+}
+
+/* ==================================== */
+/* 5. Sección de Misión y Visión */
+/* ==================================== */
+
+.section-mv {
+    padding: 80px 0; 
+    text-align: center;
+    background-color: var(--color-secundario);
+}
+
+.subtitle-center {
+    font-family: var(--font-secundaria);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--color-primario);
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 1.4rem;
+    color: var(--color-terciario);
+    margin-bottom: 50px;
+}
+
+.mv-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.mv-item {
+    flex: 1;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+    border-top: 5px solid;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mv-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+}
+
+.mv-item:first-child {
+    border-color: var(--color-primario);
+}
+
+.mv-item:last-child {
+    border-color: var(--color-realce);
+}
+
+.mv-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.mv-item h3 {
+    color: var(--color-terciario);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* ==================================== */
+/* 6. El Problema */
+/* ==================================== */
+
+.section-problema {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--color-fondo-claro); 
+}
+
+.section-problema h3 {
+    color: var(--color-primario);
+    margin-bottom: 40px;
+}
+
+.problemas-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.problema-item {
+    background-color: var(--color-secundario);
+    color: var(--color-terciario);
+    padding: 15px 30px;
+    border-radius: 50px; 
+    font-weight: bold;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--color-border-suave);
+}
+
+/* ==================================== */
+/* 7. La Solución */
+/* ==================================== */
+
+.section-solucion {
+    padding: 80px 0;
+    background-color: var(--color-secundario);
+}
+
+.section-solucion .container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.solucion-content {
+    flex: 1;
+}
+
+.solucion-content h3 {
+    font-size: 2.5rem;
+}
+
+.solucion-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.solucion-image {
+    flex: 1;
+    text-align: center;
+}
+
+.solucion-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; 
+}
+
+/* ==================================== */
+/* 8. Características */
+/* ==================================== */
+
+.section-caracteristicas {
+    padding: 80px 0;
+    background-color: var(--color-fondo-claro); 
+    text-align: center;
+}
+
+.section-caracteristicas h2 {
+    margin-bottom: 60px;
+}
+
+.caracteristicas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.caracteristica-item {
+    text-align: center;
+    padding: 25px;
+    background: var(--color-secundario);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.caracteristica-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+}
+
+.icon-container {
+    font-size: 2.5rem;
+    color: var(--color-primario); 
+    margin-bottom: 15px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: rgba(33, 111, 240, 0.1);
+    margin: 0 auto 15px;
+}
+
+.caracteristica-item h4 {
+    font-family: var(--font-principal);
+    font-size: 1.3rem;
+    color: var(--color-terciario);
+    margin-bottom: 10px;
+}
+
+/* ==================================== */
+/* 9. Resultados */
+/* ==================================== */
+
+.section-resultados {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-resultados h3 {
+    color: var(--color-primario);
+    margin-bottom: 50px;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
+.stat-item {
+    padding: 20px;
+    flex: 1;
+}
+
+.stat-number {
+    font-family: var(--font-principal);
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--color-realce);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+}
+
+/* ==================================== */
+/* 10. SECCIÓN TESTIMONIOS */
+/* ==================================== */
+
+.section-testimonios {
+    padding: 80px 0;
+    background-color: var(--color-fondo-claro);
+}
+
+.section-testimonios h2 {
+    margin-bottom: 60px;
+}
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.testimonio-item {
+    background: var(--color-secundario);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonio-texto {
+    font-style: italic;
+    color: #374151;
+    flex-grow: 1;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 20px;
+    border-left: 3px solid var(--color-primario);
+}
+
+.testimonio-autor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.testimonio-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-primario-suave);
+    color: var(--color-secundario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-principal);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.testimonio-info h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-terciario);
+}
+
+.testimonio-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6B7280;
+}
+
+
+/* ==================================== */
+/* 11. SECCIÓN FAQ (ACORDEÓN) */
+/* ==================================== */
+
+.section-faq {
+    padding: 80px 0;
+    background-color: var(--color-secundario);
+}
+
+.section-faq h2 {
+    margin-bottom: 60px;
+}
+
+.faq-acordeon {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border: 1px solid var(--color-border-suave);
+    border-radius: 10px;
+    overflow: hidden; /* Clave para el acordeón */
+}
+
+.faq-pregunta {
+    width: 100%;
+    background: var(--color-secundario);
+    padding: 20px 25px;
+    border: none;
+    text-align: left;
+    font-family: var(--font-principal);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-terciario);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-pregunta:hover {
+    color: var(--color-primario);
+}
+
+.faq-icono {
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    transition: transform 0.3s ease;
+}
+
+.faq-respuesta {
+    padding: 0 25px;
+    max-height: 0; /* Oculto por defecto */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.faq-respuesta p {
+    color: #4B5563;
+    padding-bottom: 20px; /* Espacio para que no se pegue al cerrar */
+    line-height: 1.7;
+}
+
+/* Estilos cuando el acordeón está ACTIVO */
+.faq-item.active .faq-respuesta {
+    max-height: 300px; /* Altura suficiente para el contenido */
+    padding-top: 0;
+}
+
+.faq-item.active .faq-icono {
+    transform: rotate(45deg); /* Gira el '+' a 'x' */
+}
+.faq-item.active .faq-pregunta {
+    color: var(--color-primario);
+}
+
+
+/* ==================================== */
+/* 12. CTA Final y Footer */
+/* ==================================== */
+
+.section-final-cta {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--color-terciario);
+    color: var(--color-secundario);
+}
+
+.section-final-cta h2 {
+    color: var(--color-secundario);
+    margin-bottom: 40px;
+    font-size: 2.8rem;
+}
+
+.final-cta {
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    padding: 18px 40px;
+}
+
+.section-final-cta p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.footer-oscuro {
+    background-color: var(--color-footer-bg); 
+    color: var(--color-secundario);
+    padding: 40px 0 20px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    font-family: var(--font-principal);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.newsletter p {
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    flex-grow: 1;
+    max-width: 250px;
+    font-size: 1rem;
+    font-family: var(--font-secundaria);
+}
+
+.newsletter-form .cta-button.signup {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: var(--color-realce);
+    color: var(--color-secundario) !important;
+    border-radius: 5px; 
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: var(--color-secundario);
+    text-decoration: none;
+    margin-right: 20px;
+    opacity: 0.7;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.copyright p {
+    margin: 5px 0;
+    opacity: 0.7;
+}
+
+
+/* ==================================== */
+/* 13. Responsividad (Móviles) */
+/* ==================================== */
+
+@media (max-width: 992px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-main-content {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .hero-text-content {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 2.8rem; 
+        text-align: center;
+    }
+    .hero-text-content p {
+        text-align: center;
+        max-width: 100%;
+    }
+    .hero-actions {
+        justify-content: center;
+    }
+    .hero-image-right {
+        min-height: 300px;
+        margin-top: 0;
+    }
+    
+    .mv-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .mv-item {
+        text-align: center;
+    }
+    .mv-item h3 {
+        text-align: center;
+    }
+    
+    .section-solucion .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .solucion-content {
+        order: 2;
+    }
+    .solucion-image {
+        order: 1;
+    }
+
+    .caracteristicas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* Testimonios en tablet */
+    .testimonios-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .footer-top, .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-logo, .newsletter, .newsletter-form, .footer-links {
+        margin-bottom: 20px;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    .newsletter-form input {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    .hero-text-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .problema-item {
+        width: 100%;
+    }
+
+    .caracteristicas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Testimonios en móvil */
+    .testimonios-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ==================================== */
+/* 14. ESTILOS PÁGINA DE LOGIN */
+/* ==================================== */
+
+.login-page-body {
+    /* Asegura que el body ocupe toda la altura */
+    min-height: 100vh;
+    background-color: var(--color-fondo-claro);
+    font-family: var(--font-secundaria);
+}
+
+.login-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* === Panel Izquierdo (Branding) === */
+.login-branding-panel {
+    background: linear-gradient(135deg, var(--color-primario-suave) 0%, var(--color-primario) 100%);
+    color: var(--color-secundario);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.login-branding-content .logo-blanco {
+    font-family: var(--font-principal);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-secundario);
+    margin-bottom: 20px;
+}
+
+.login-branding-content h2 {
+    font-family: var(--font-principal);
+    font-size: 2.5rem;
+    color: var(--color-secundario);
+    margin-bottom: 10px;
+}
+
+.login-branding-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* === Panel Derecho (Formulario) === */
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: var(--color-secundario);
+}
+
+.login-form-box {
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-form-box h2 {
+    font-family: var(--font-principal);
+    font-size: 2.2rem;
+    color: var(--color-terciario);
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.login-subtitulo {
+    font-size: 1.1rem;
+    color: #6B7280;
+    margin-bottom: 30px;
+}
+
+.btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    border-radius: 50px;
+    border: 1px solid var(--color-border-suave);
+    background-color: var(--color-secundario);
+    font-family: var(--font-secundaria);
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--color-terciario);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+    background-color: var(--color-fondo-claro);
+}
+
+.btn-google img {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+.separator {
+    text-align: center;
+    color: #9CA3AF;
+    margin: 25px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--color-border-suave);
+}
+.separator::before { margin-right: 10px; }
+.separator::after { margin-left: 10px; }
+
+/* Estilos del Formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-border-suave);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-secundaria);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(33, 111, 240, 0.1);
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.login-options a {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    color: #4B5563;
+}
+
+.remember-me input {
+    margin-right: 8px;
+}
+
+.login-btn {
+    width: 100%; /* Botón de login a ancho completo */
+    padding: 15px;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 25px;
+    color: #4B5563;
+}
+
+.register-link a {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* === Responsividad para Login === */
+@media (max-width: 992px) {
+    .login-page-container {
+        grid-template-columns: 1fr; /* Apila las columnas */
+    }
+
+    .login-branding-panel {
+        /* Opcional: ocultar el panel de branding en móvil */
+        /* display: none; */ 
+        
+        /* O: hacerlo más pequeño */
+        min-height: 300px;
+        justify-content: flex-end;
+        padding-bottom: 50px;
+    }
+    
+    .login-branding-content [Image] {
+        display: none; /* Oculta la imagen en móvil */
+    }
+
+    .login-form-container {
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+}

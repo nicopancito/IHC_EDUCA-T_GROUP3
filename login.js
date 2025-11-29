@@ -12,5 +12,5 @@ function handleLogin(event) {
     // Si la validación es exitosa, redirige al dashboard
     // (Cambié "ServiciosNeuraVault.html" por "dashboard.html" que es más apropiado)
     alert("¡Inicio de sesión exitoso! Redirigiendo...");
-    window.location.href = "dashboard.html"; 
+    window.location.href = "Inicio.html"; 
 }

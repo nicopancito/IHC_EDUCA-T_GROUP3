@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduCa-T - Tutoría en vivo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tutorias.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="left-group">
+      <button class="back-btn" onclick="history.back()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <div class="title-group">
+        <h1>Tutorías en tiempo real</h1>
+        <span>9 Lesson · 6h 30min</span>
+      </div>
+    </div>
+    <button class="settings-btn">
+      <i class="fas fa-cog"></i>
+    </button>
+  </header>
+  <div class="container">
+    <main class="classroom">
+      <div class="main-video">
+        <img src="imagenes/profesora.png" alt="Tutora" class="professor-img">
+        <div class="pip-video">
+          <img src="imagenes/chica.png" alt="Tú">
+        </div>
+      </div>
+      <div class="video-controls">
+        <button class="control-btn"><i class="fas fa-video-slash"></i></button>
+        <button class="control-btn active"><i class="fas fa-microphone"></i></button>
+        <button class="control-btn end-call"><i class="fas fa-phone-slash"></i></button>
+        <button class="control-btn"><i class="fas fa-desktop"></i></button>
+        <button class="control-btn"><i class="fas fa-share-alt"></i></button>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="chat-panel">
+        <div class="chat-header">
+          <h3>Chat bot</h3>
+          <span class="lesson-duration">9 Lesson · 6h 30min</span>
+        </div>
+        <div class="chat-messages">
+          <div class="message bot">
+            <div class="bubble">
+              ¡Hola! Soy tu asistente académico de EduCa-T<br><br>
+              Sé que a veces la universidad puede traer estrés, exceso de información y desorden en los horarios.<br><br>
+              ¿Quieres que te ayude a organizar un plan de estudio con IA, conectarte a una tutoría virtual colaborativa o aprender técnicas para gestionar mejor tu tiempo y el estrés académico?
+            </div>
+          </div>
+        </div>
+        <div class="chat-input">
+          <input type="text" placeholder="Escribir">
+          <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <footer class="main-footer">
+    <div class="logo">EduCa-T</div>
+    <div class="newsletter">
+      <p>Subscribe to get our Newsletter</p>
+      <form>
+        <input type="email" placeholder="Your Email">
+        <button>Suscribirse</button>
+      </form>
+    </div>
+    <div class="footer-links">
+      <a href="#">Careers</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+      <p>© 2025 Class Technologies Inc.</p>
+      <p>Phone: +51 954321456</p>
+    </div>
+  </footer>
+</body>
+</html>

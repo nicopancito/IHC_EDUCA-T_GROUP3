@@ -1,68 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - EduCa-T</title>
-    
-    <link rel="stylesheet" href="style.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a EduCa-T</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="Login.css">
 </head>
+<body>
 
-<body class="login-page-body">
-
-    <div class="login-page-container">
-        
-        <div class="login-branding-panel">
-            <div class="login-branding-content">
-                <div class="logo-blanco">EduCa-T</div>
-                <h2>Bienvenido de nuevo</h2>
+    <div class="card-container">
+        <div class="image-side">
+            <div class="overlay-text">
+                <h2>EduCa-T</h2>
                 <p>Optimiza tu aprendizaje y domina tu semestre.</p>
-                
             </div>
         </div>
 
-        <div class="login-form-container">
-            <div class="login-form-box">
-                <h2>Iniciar Sesión</h2>
-                <p class="login-subtitulo">Accede a tu plan de estudio personalizado.</p>
-                
-                <button type="button" class="btn-google">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
-                    Iniciar sesión con Google
-                </button>
-                
-                <div class="separator">o inicia con tu correo</div>
-
-                <form onsubmit="handleLogin(event)">
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" placeholder="••••••••" required>
-                    </div>
-
-                    <div class="login-options">
-                        <label class="remember-me"><input type="checkbox" name="remember" /> Recordarme</label>
-                        <a href="#">¿Olvidaste tu contraseña?</a>
-                    </div>
-
-                    <button type="submit" class="cta-button primary-cta login-btn">Iniciar Sesión</button>
-
-                    <p class="register-link">¿No tienes cuenta? <a href="register.html">Crear cuenta</a></p>
-                </form>
+        <div class="form-side">
+            <div class="header">
+                <div class="logo">E</div>
+                <h3>Bienvenido a EduCa-T</h3>
             </div>
-        </div>
 
+            <div class="toggle-buttons">
+                <button class="btn-toggle active" id="tabLogin" onclick="showForm('login')">Ingresar</button>
+                <button class="btn-toggle" id="tabRegister" onclick="showForm('register')">Registrarse</button>
+            </div>
+
+            <p class="description">
+                EduCa-T es una plataforma digital de asesoría y aprendizaje universitario que utiliza IA para crear planes de estudio personalizados.
+            </p>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="input-box">
+                    <label>Correo electrónico</label>
+                    <input type="email" id="login-email" placeholder="tucorreo@ejemplo.com" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Contraseña</label>
+                    <div class="password-container">
+                        <input type="password" id="login-password" placeholder="••••••••" required>
+                        <i class="fa-solid fa-eye-slash toggle-pass" onclick="togglePass('login-password', this)"></i>
+                    </div>
+                </div>
+
+                <div class="options-row">
+                    <label class="remember-me">
+                        <input type="checkbox"> Recordarme
+                    </label>
+                    <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="action-btn">Iniciar Sesión</button>
+            </form>
+
+            <form id="registerForm" style="display: none;" onsubmit="handleRegister(event)">
+                <div class="input-box">
+                    <label>Nombre de Usuario</label>
+                    <input type="text" id="reg-name" placeholder="Tu nombre completo" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Correo electrónico</label>
+                    <input type="email" id="reg-email" placeholder="tucorreo@ejemplo.com" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Contraseña</label>
+                    <div class="password-container">
+                        <input type="password" id="reg-password" placeholder="Crea una contraseña" required>
+                        <i class="fa-solid fa-eye-slash toggle-pass" onclick="togglePass('reg-password', this)"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="action-btn">Crear Cuenta</button>
+            </form>
+
+        </div>
     </div>
 
     <script src="login.js"></script>
-
 </body>
 </html>

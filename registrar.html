@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a EduCa-T</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="registrar.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="left-side">
+            <div class="content-overlay">
+                <h1>EduCa-T</h1>
+                <p>Tu futuro profesional comienza aquí</p>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="form-wrapper">
+                <div class="header-logo">
+                    <div class="logo-circle">E</div>
+                    <h2>Bienvenido a EduCa-T</h2>
+                </div>
+
+                <div class="toggle-container">
+                    <button class="toggle-btn" id="loginBtn" onclick="switchTab('login')">Ingresar</button>
+                    <button class="toggle-btn active" id="registerBtn" onclick="switchTab('register')">Registrarse</button>
+                </div>
+
+                <p class="description">
+                    EduCa-T es una plataforma digital de asesoría y aprendizaje universitario que utiliza inteligencia artificial para crear planes de estudio personalizados.
+                </p>
+
+                <form class="form-content" id="authForm">
+                    <div class="input-group">
+                        <label>Correo electrónico</label>
+                        <input type="email" placeholder="Ingresa tu correo">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Usuario</label>
+                        <input type="text" placeholder="Ingresa tu nombre de usuario">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Contraseña</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="Ingresa tu contraseña">
+                            <i class="fa-solid fa-eye-slash toggle-password" onclick="togglePassword()"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Repetir contraseña</label>
+                        <input type="password" placeholder="Repite tu contraseña">
+                    </div>
+
+                    <button type="button" class="submit-btn">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="registrar.js"></script>
+</body>
+</html>

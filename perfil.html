@@ -60,29 +60,30 @@
                 </div>
             </div>
 
-            <form class="profile-form-wrapper">
+           <form class="profile-form-wrapper">
                 <div class="profile-form-group">
                     <label>Nombre</label>
-                    <input type="text" value="Lina" class="profile-input">
+                    <input type="text" id="profileName" placeholder="Tu nombre" class="profile-input">
                 </div>
 
                 <div class="profile-form-group">
                     <label>Apellido</label>
-                    <input type="text" value="Benitez" class="profile-input">
+                    <input type="text" id="profileSurname" placeholder="Tu apellido" class="profile-input">
                 </div>
 
                 <div class="profile-form-group">
                     <label>Correo electrónico</label>
-                    <input type="email" value="lina@example.com" class="profile-input">
+                    <input type="email" id="profileEmail" class="profile-input" style="background-color: #f0f0f0; cursor: not-allowed;" readonly>
+                    <small style="color: #666; font-size: 11px;">El correo no se puede cambiar por seguridad.</small>
                 </div>
 
                 <div class="profile-form-group">
-                    <label>Zona horaria</label>
-                    <input type="text" value="(GMT-05:00) Lima" class="profile-input">
+                    <label>Nueva Contraseña</label>
+                    <input type="password" id="profilePassword" placeholder="Escribe para cambiarla" class="profile-input">
                 </div>
 
                 <div class="profile-form-actions">
-                    <button type="button" class="profile-btn profile-btn-primary profile-btn-save">Guardar Cambios</button>
+                    <button type="button" class="profile-btn profile-btn-primary profile-btn-save" id="btnSaveProfile">Guardar Cambios</button>
                 </div>
             </form>
         </div>

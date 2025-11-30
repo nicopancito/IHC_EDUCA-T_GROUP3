@@ -1,0 +1,227 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Evita scrollbars innecesarios */
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Ocupa toda la altura */
+    background: white;
+}
+
+/* --- LADO IZQUIERDO (IMAGEN) --- */
+.left-side {
+    flex: 1; /* Ocupa el 50% del ancho */
+    width: 50%;
+    height: 100%;
+    position: relative;
+    /* Imagen de fondo */
+    background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+}
+
+/* Capa oscura sobre la imagen */
+.left-side::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1));
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 2;
+    padding: 60px; /* Más espacio en pantalla completa */
+    width: 100%;
+}
+
+.content-overlay h1 {
+    font-size: 3.5rem; /* Letra más grande para pantalla completa */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.content-overlay p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* --- LADO DERECHO (FORMULARIO) --- */
+.right-side {
+    flex: 1; /* Ocupa el otro 50% */
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente el wrapper */
+    align-items: center;     /* Centrar verticalmente el wrapper */
+    background-color: #ffffff;
+    padding: 40px;
+    overflow-y: auto; /* Permite scroll si la pantalla es muy bajita */
+}
+
+/* Wrapper para que el formulario no se estire infinitamente */
+.form-wrapper {
+    width: 100%;
+    max-width: 480px; /* Ancho máximo para que se vea elegante */
+}
+
+.header-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #2196F3;
+    color: white;
+    font-size: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-weight: bold;
+}
+
+.header-logo h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Toggle Ingresar/Registrarse */
+.toggle-container {
+    background-color: #E3F2FD; /* Fondo más suave */
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.toggle-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #555;
+    padding: 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.toggle-btn.active {
+    background-color: #2196F3;
+    color: white;
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 50px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #2196F3;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.1);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.2s, background 0.3s;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+.submit-btn:hover {
+    background-color: #1976D2;
+    transform: translateY(-2px);
+}
+
+/* Responsivo para móviles */
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .left-side {
+        width: 100%;
+        height: 250px; /* Imagen más pequeña arriba en móviles */
+        flex: none;
+    }
+
+    .right-side {
+        width: 100%;
+        flex: 1;
+        padding: 30px 20px;
+        align-items: flex-start; /* Alinear arriba */
+    }
+
+    .content-overlay h1 {
+        font-size: 2rem;
+    }
+}

@@ -93,7 +93,7 @@ function handleLogin(event) {
         alert(`¡Bienvenido de nuevo, ${validUser.name}!`);
         
         // CONEXIÓN A INICIO.HTML
-        window.location.href = 'inicio.html'; 
+        window.location.href = 'Inicio.html'; 
         
     } else {
         // --- LOGIN FALLIDO ---

@@ -1,12 +1,23 @@
-// script.js
+// --- VARIABLES GLOBALES PARA MANEJO DE SESIÓN TEMPORAL ---
+let pendingTwoFactorEmail = null; 
 
 // --- LÓGICA VISUAL (CAMBIAR PESTAÑAS Y VER PASSWORD) ---
 
 function showForm(formType) {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
+    const twoFactorForm = document.getElementById('twoFactorForm'); 
+    const toggleButtons = document.querySelector('.toggle-buttons'); 
+    const description = document.querySelector('.description');
+
     const tabLogin = document.getElementById('tabLogin');
     const tabRegister = document.getElementById('tabRegister');
+
+    // Resetear estados visuales
+    twoFactorForm.style.display = 'none';
+    toggleButtons.style.display = 'flex'; // Mostrar botones de pestaña
+    description.style.display = 'block'; // Mostrar descripción
+    pendingTwoFactorEmail = null;
 
     if (formType === 'login') {
         loginForm.style.display = 'block';
@@ -34,76 +45,159 @@ function togglePass(inputId, icon) {
     }
 }
 
-// --- TU LÓGICA DE BACKEND (LOCALSTORAGE) ---
+// ----------------------------------------------------------------
+// 🔑 LÓGICA DE SEGURIDAD (Hashing + Autenticación 2 Pasos)
+// ----------------------------------------------------------------
 
-// 1. Función para manejar el REGISTRO
+// 1. Cifrado SHA-256 (Simulación de seguridad Backend)
+function hashPassword(password) {
+    if (typeof CryptoJS === 'undefined') {
+        alert("Error: Librería de seguridad no cargada.");
+        return password;
+    }
+    return CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
+}
+
+// 2. Generador de Token (Simulación de 6 dígitos)
+function generateTwoFactorToken() {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+// 3. Mostrar Formulario de 2 Pasos
+function showTwoFactorForm(email) {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const twoFactorForm = document.getElementById('twoFactorForm');
+    const toggleButtons = document.querySelector('.toggle-buttons');
+    const description = document.querySelector('.description');
+
+    // Ocultar todo lo que no sea el formulario de 2FA
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'none';
+    toggleButtons.style.display = 'none'; 
+    description.style.display = 'none'; // Ocultamos la descripción para limpiar la vista
+
+    // Configurar y mostrar 2FA
+    document.getElementById('two-factor-email-display').textContent = email;
+    twoFactorForm.style.display = 'block';
+    
+    // Guardar email en memoria temporal
+    pendingTwoFactorEmail = email;
+}
+
+// --- MANEJADORES DE EVENTOS ---
+
+// A. REGISTRO
 function handleRegister(event) {
     event.preventDefault(); 
 
-    // Obtener valores de los inputs del formulario de registro
     const name = document.getElementById('reg-name').value;
     const email = document.getElementById('reg-email').value;
     const password = document.getElementById('reg-password').value;
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Verificar si existe
-    const userExists = users.find(u => u.email === email);
-
-    if (userExists) {
-        alert('Este correo ya está registrado. Por favor, inicia sesión.');
-        showForm('login'); // Cambiar visualmente a la pestaña login
+    
+    if (users.find(u => u.email === email)) {
+        alert('Este correo ya está registrado.');
+        showForm('login'); 
         return;
     }
 
-    // Crear usuario
+    // Crear usuario con contraseña cifrada y token inicial
     const newUser = {
         name: name,
         email: email,
-        password: password
+        password: hashPassword(password),
+        twoFactorToken: generateTwoFactorToken() // Generamos un token por defecto
     };
 
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
 
-    alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
+    alert('¡Cuenta creada! Por seguridad, se te pedirá un código de verificación al ingresar.');
     
-    // Limpiar campos y mandar al login
     document.getElementById('registerForm').reset();
     showForm('login');
 }
 
-// 2. Función para manejar el LOGIN
+// B. LOGIN - PASO 1 (Credenciales)
 function handleLogin(event) {
     event.preventDefault();
 
-    // Obtener valores de los inputs del formulario de login
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
 
     const users = JSON.parse(localStorage.getItem('users')) || [];
+    const passwordHash = hashPassword(password);
 
-    const validUser = users.find(user => user.email === email && user.password === password);
+    // Buscar usuario
+    const validUser = users.find(user => user.email === email && user.password === passwordHash);
 
     if (validUser) {
-        // --- LOGIN EXITOSO ---
-        // Guardamos el usuario actual en sesión (opcional, útil para mostrar el nombre luego)
-        localStorage.setItem('currentUser', JSON.stringify(validUser));
+        // --- ÉXITO PASO 1 ---
+        // Generar NUEVO token para esta sesión
+        const newToken = generateTwoFactorToken();
         
-        alert(`¡Bienvenido de nuevo, ${validUser.name}!`);
+        // Guardar token en localStorage (Simulando envío al servidor)
+        validUser.twoFactorToken = newToken;
         
-        // CONEXIÓN A INICIO.HTML
-        window.location.href = 'Inicio.html'; 
+        // Actualizar la lista de usuarios en localStorage
+        const userIndex = users.findIndex(u => u.email === email);
+        users[userIndex] = validUser;
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // 🛑 SIMULACIÓN DE EMAIL 🛑
+        alert(`PASO 1 CORRECTO.\n\nSimulación de SMS/Email:\nTu código de acceso es: ${newToken}`);
+        
+        // Ir al Paso 2
+        showTwoFactorForm(email);
         
     } else {
-        // --- LOGIN FALLIDO ---
-        const emailExists = users.find(user => user.email === email);
+        alert('Correo o contraseña incorrectos.');
+    }
+}
+
+// C. LOGIN - PASO 2 (Código 2FA)
+function handleTwoFactor(event) {
+    event.preventDefault();
+
+    const enteredToken = document.getElementById('two-factor-token').value;
+    const email = pendingTwoFactorEmail;
+    
+    if (!email) { showForm('login'); return; }
+
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === email);
+
+    // Verificar si el token coincide
+    if (user && user.twoFactorToken === enteredToken) {
+        // --- ÉXITO TOTAL ---
+        sessionStorage.setItem('currentUser', JSON.stringify({ name: user.name, email: user.email }));
         
-        if (emailExists) {
-            alert('Contraseña incorrecta.');
-        } else {
-            alert('No existe una cuenta con este correo. Debes registrarte primero.');
-            showForm('register'); // Mandar a registrarse si no existe
-        }
+        alert(`¡Identidad verificada!\nBienvenido, ${user.name}.`);
+        window.location.href = 'Inicio.html'; 
+    } else {
+        alert('Código incorrecto. Inténtalo de nuevo.');
+        document.getElementById('two-factor-token').value = '';
+    }
+}
+
+// D. REENVIAR CÓDIGO
+function handleResendCode(event) {
+    event.preventDefault();
+    const email = pendingTwoFactorEmail;
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === email);
+
+    if (user) {
+        const newToken = generateTwoFactorToken();
+        user.twoFactorToken = newToken;
+        
+        // Actualizar localStorage
+        const index = users.findIndex(u => u.email === email);
+        users[index] = user;
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert(`Nuevo código generado (Simulación): ${newToken}`);
     }
 }

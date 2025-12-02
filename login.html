@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="Login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
 
@@ -77,6 +78,23 @@
                 </div>
 
                 <button type="submit" class="action-btn">Crear Cuenta</button>
+            </form>
+            
+            <form id="twoFactorForm" style="display: none;" onsubmit="handleTwoFactor(event)">
+                <div class="input-box">
+                    <label>Código de Seguridad</label>
+                    <p class="description" style="margin-bottom: 15px; text-align: left;">
+                        Hemos enviado un código de 6 dígitos a: <br>
+                        <span id="two-factor-email-display" style="font-weight: 600; color: #2196F3;"></span>
+                    </p>
+                    <input type="text" id="two-factor-token" placeholder="Ej: 123456" required maxlength="6" pattern="\d{6}" style="letter-spacing: 2px; text-align: center;">
+                </div>
+
+                <button type="submit" class="action-btn">Verificar e Ingresar</button>
+
+                <p class="options-row" style="justify-content: center; margin-top: 15px;">
+                    <a href="#" class="forgot-link" onclick="handleResendCode(event)">Reenviar código</a>
+                </p>
             </form>
 
         </div>
